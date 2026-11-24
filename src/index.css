@@ -1,0 +1,390 @@
+@import "tailwindcss";
+@import "@fontsource/barlow-condensed/600.css";
+@import "@fontsource/barlow-condensed/700.css";
+@import "@fontsource/barlow-condensed/800.css";
+@import "@fontsource/rajdhani/500.css";
+@import "@fontsource/rajdhani/600.css";
+@import "@fontsource/rajdhani/700.css";
+@import "@fontsource/plus-jakarta-sans/400.css";
+@import "@fontsource/plus-jakarta-sans/500.css";
+@import "@fontsource/plus-jakarta-sans/600.css";
+@import "@fontsource/plus-jakarta-sans/700.css";
+@import "@fontsource/space-grotesk/500.css";
+@import "@fontsource/space-grotesk/700.css";
+
+:root {
+  --tkpl-obsidian: #060b14;
+  --tkpl-navy: #0c1729;
+  --tkpl-navy-elevated: #12213b;
+  --tkpl-gold: #e5b85c;
+  --tkpl-gold-bright: #f7d58b;
+  --tkpl-crimson: #e03340;
+  --tkpl-seam-red: #c82732;
+  --tkpl-emerald: #22c55e;
+  --tkpl-sky: #38bdf8;
+  --tkpl-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --tkpl-spring: cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  min-height: 100dvh;
+  font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+  background-color: var(--tkpl-obsidian);
+  color: #f4f7fb;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Transparent / Green / Preview OBS modes override page background cleanly */
+html[data-overlay-mode="transparent"],
+html[data-overlay-mode="transparent"] body,
+html[data-overlay-mode="transparent"] #root {
+  background: transparent !important;
+  overflow: hidden !important;
+}
+
+html[data-overlay-mode="green"],
+html[data-overlay-mode="green"] body,
+html[data-overlay-mode="green"] #root {
+  background: #00b140 !important;
+  overflow: hidden !important;
+}
+
+html[data-overlay-mode="preview"],
+html[data-overlay-mode="preview"] body,
+html[data-overlay-mode="preview"] #root {
+  background: #050a12 !important;
+  overflow: hidden !important;
+}
+
+.font-display {
+  font-family: "Barlow Condensed", sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+
+.font-hud {
+  font-family: "Rajdhani", sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+
+.font-telemetry {
+  font-family: "Space Grotesk", sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Double-Bezel machined control panel surface */
+.bezel-shell {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.065) 0%,
+    rgba(255, 255, 255, 0.018) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  padding: 6px;
+  border-radius: 24px;
+}
+
+.bezel-core {
+  background: linear-gradient(
+    180deg,
+    rgba(15, 28, 49, 0.94) 0%,
+    rgba(9, 17, 31, 0.97) 100%
+  );
+  border-radius: 18px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.11);
+}
+
+/* Broadcast Scorebar Glass & Metallic Rim */
+.broadcast-bezel {
+  background: linear-gradient(
+    135deg,
+    rgba(247, 213, 139, 0.36) 0%,
+    rgba(255, 255, 255, 0.1) 35%,
+    rgba(224, 51, 64, 0.34) 100%
+  );
+  padding: 2px;
+  border-radius: 18px;
+  box-shadow: 0 22px 60px rgba(3, 7, 16, 0.72);
+}
+
+.broadcast-surface {
+  background: linear-gradient(
+    180deg,
+    rgba(13, 25, 46, 0.96) 0%,
+    rgba(7, 14, 26, 0.98) 100%
+  );
+  border-radius: 16px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14);
+}
+
+/* GPU-safe Broadcast Keyframes (transform & opacity ONLY) */
+@keyframes tkpl-slide-up {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 36px, 0) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes tkpl-slide-down {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -28px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes tkpl-pop-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.76) translate3d(0, 22px, 0);
+  }
+  58% {
+    opacity: 1;
+    transform: scale(1.035) translate3d(0, -2px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+}
+
+@keyframes tkpl-score-bump {
+  0% {
+    transform: scale(1);
+  }
+  35% {
+    transform: scale(1.13);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes tkpl-sheen {
+  0% {
+    transform: translate3d(-120%, 0, 0) skewX(-24deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate3d(260%, 0, 0) skewX(-24deg);
+    opacity: 0;
+  }
+}
+
+@keyframes tkpl-spark-burst {
+  0% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(0.4) rotate(0deg);
+  }
+  70% {
+    opacity: 0.95;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--tx), var(--ty), 0) scale(1.1) rotate(var(--rot));
+  }
+}
+
+@keyframes tkpl-shockwave {
+  0% {
+    opacity: 0.9;
+    transform: scale(0.25);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2.4);
+  }
+}
+
+@keyframes tkpl-pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.35;
+    transform: scale(0.75);
+  }
+}
+
+@keyframes tkpl-ball-arc {
+  0% {
+    offset-distance: 0%;
+    transform: scale(0.65) rotate(0deg);
+    opacity: 0;
+  }
+  8% {
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.22) rotate(360deg);
+  }
+  92% {
+    opacity: 1;
+  }
+  100% {
+    offset-distance: 100%;
+    transform: scale(0.85) rotate(760deg);
+    opacity: 0.9;
+  }
+}
+
+@keyframes tkpl-draw-path {
+  from {
+    stroke-dashoffset: 900;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes tkpl-float-slow {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -6px, 0);
+  }
+}
+
+.anim-slide-up {
+  animation: tkpl-slide-up 540ms var(--tkpl-ease) both;
+}
+
+.anim-slide-down {
+  animation: tkpl-slide-down 460ms var(--tkpl-ease) both;
+}
+
+.anim-pop-in {
+  animation: tkpl-pop-in 520ms var(--tkpl-spring) both;
+}
+
+.anim-score-bump {
+  animation: tkpl-score-bump 420ms var(--tkpl-spring) both;
+}
+
+.anim-sheen {
+  animation: tkpl-sheen 1.45s var(--tkpl-ease) 180ms both;
+}
+
+.anim-pulse-dot {
+  animation: tkpl-pulse-dot 1.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.anim-shockwave {
+  animation: tkpl-shockwave 900ms var(--tkpl-ease) both;
+}
+
+.anim-spark {
+  animation: tkpl-spark-burst 1.05s var(--tkpl-ease) var(--delay, 0ms) both;
+}
+
+/* Broadcast Stinger Wipe Transition Keyframes (100% GPU transform & opacity) */
+@keyframes tkpl-stinger-blade-a {
+  0% {
+    transform: translate3d(-135%, 0, 0) skewX(-16deg);
+  }
+  42% {
+    transform: translate3d(-5%, 0, 0) skewX(-16deg);
+  }
+  58% {
+    transform: translate3d(5%, 0, 0) skewX(-16deg);
+  }
+  100% {
+    transform: translate3d(140%, 0, 0) skewX(-16deg);
+  }
+}
+
+@keyframes tkpl-stinger-blade-b {
+  0% {
+    transform: translate3d(-145%, 0, 0) skewX(-16deg);
+  }
+  44% {
+    transform: translate3d(-8%, 0, 0) skewX(-16deg);
+  }
+  56% {
+    transform: translate3d(8%, 0, 0) skewX(-16deg);
+  }
+  100% {
+    transform: translate3d(150%, 0, 0) skewX(-16deg);
+  }
+}
+
+@keyframes tkpl-stinger-crest {
+  0% {
+    opacity: 0;
+    transform: scale(0.55) translate3d(-140px, 0, 0);
+  }
+  30% {
+    opacity: 1;
+    transform: scale(1.06) translate3d(0, 0, 0);
+  }
+  65% {
+    opacity: 1;
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.18) translate3d(140px, 0, 0);
+  }
+}
+
+@keyframes tkpl-scanline {
+  0% {
+    transform: translate3d(-100%, 0, 0);
+  }
+  100% {
+    transform: translate3d(200%, 0, 0);
+  }
+}
+
+.anim-stinger-blade-a {
+  animation: tkpl-stinger-blade-a 840ms cubic-bezier(0.76, 0, 0.24, 1) both;
+}
+
+.anim-stinger-blade-b {
+  animation: tkpl-stinger-blade-b 840ms cubic-bezier(0.76, 0, 0.24, 1) 45ms both;
+}
+
+.anim-stinger-crest {
+  animation: tkpl-stinger-crest 840ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.anim-scanline {
+  animation: tkpl-scanline 2.4s linear infinite;
+}
+
+/* Custom sleek scrollbar for control room */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.03);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(229, 184, 92, 0.28);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(229, 184, 92, 0.5);
+}

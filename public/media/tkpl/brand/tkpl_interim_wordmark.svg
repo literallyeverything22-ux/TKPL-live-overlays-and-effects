@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 250" role="img" aria-labelledby="title desc">
+<title id="title">TKPL design-stage wordmark</title><desc id="desc">Provisional TKPL wordmark with illustrated red tennis ball</desc>
+<rect x="0" y="0" width="720" height="250" rx="18" fill="#071426" />
+<g transform="translate(34 28)"><circle cx="87" cy="88" r="68" fill="#C82732" stroke="#E5B85C" stroke-width="7"/><path d="M30 67 C70 91 101 44 145 67 M25 117 C69 142 119 105 148 124" stroke="#F6F5F0" stroke-width="9" fill="none" stroke-linecap="round"/></g>
+<text x="210" y="152" fill="#F6F5F0" font-family="Arial,Helvetica,sans-serif" font-size="123" font-weight="900" font-style="italic" letter-spacing="-9">TKPL</text>
+<path d="M216 175 H678" stroke="#E5B85C" stroke-width="6"/><text x="216" y="207" fill="#E5B85C" font-family="Arial,Helvetica,sans-serif" font-size="22" font-weight="700" letter-spacing="3.2">TENNIS KADAPA PREMIER LEAGUE</text></svg>

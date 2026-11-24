@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="Stylized red hard tennis ball">
+<defs><clipPath id="b"><circle cx="128" cy="128" r="105"/></clipPath></defs>
+<circle cx="128" cy="128" r="112" fill="#071426"/>
+<circle cx="128" cy="128" r="104" fill="#C82732"/>
+<g clip-path="url(#b)" stroke="#F6F5F0" stroke-width="13" fill="none" stroke-linecap="round">
+<path d="M22 83 C73 110 154 46 227 73"/>
+<path d="M33 171 C103 202 170 138 231 158"/>
+</g></svg>

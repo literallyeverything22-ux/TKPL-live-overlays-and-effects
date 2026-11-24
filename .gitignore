@@ -1,0 +1,15 @@
+# Dependencies & build output (auto-rebuilt by start.bat)
+node_modules/
+dist/
+
+# Live local match state & backups (auto-created cleanly from data/tkpl-2026-teams.json)
+data/tournament-state.json
+data/tournament-state.json.*.tmp
+data/backups/
+
+# Local OS & editor clutter
+.DS_Store
+Thumbs.db
+*.log
+.env
+.env.local
